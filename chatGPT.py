@@ -53,13 +53,14 @@ class NugGPT:
             self.chat.stop()
             await self.twitch.close()
 
-
 if __name__ == '__main__':
     APP_ID = config.APP_ID
     APP_SECRET = config.APP_SECRET
-    USER_SCOPE = [AuthScope.CHAT_READ, AuthScope.CHAT_EDIT]
+    USER_SCOPE = [AuthScope.CHAT_READ, AuthScope.CHAT_EDIT, AuthScope.MODERATOR_MANAGE_BANNED_USERS]
     # Replace the apostrophe'd item below with whatever Twitch channel name (NOT the URL) you want the bot to respond to
     TARGET_CHANNEL = 'replace_with_the_twitch_channel_name'
+    # Replace the apostrophe'd item below with your bot's username making sure to include the @ sign
+    BOT_NAME = '@replace_with_bot_name'
 
-    nugexe = NugGPT(APP_ID, APP_SECRET, USER_SCOPE, TARGET_CHANNEL)
+    nugexe = NugGPT(APP_ID, APP_SECRET, USER_SCOPE, TARGET_CHANNEL, BOT_NAME)
     asyncio.run(nugexe.run())
